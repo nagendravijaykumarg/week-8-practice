@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+
+public class Deadlock {
+
+    public static void main(String[] args) {
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("StudentDetails.txt"));
+            BufferedReader br1 = new BufferedReader(new FileReader("EmployeeDetails.txt"));
+
+            Thread t1 = new Thread() {
+
+                public void run() {
+                    synchronized (br) {
+                        System.out.println("Thread t1 is locked with s1");
+                        synchronized (br1) {
+                            System.out.println("Thread t2 is locked with s2");
+                        }
+                    }
+                }
+            };
+
+            Thread t2 = new Thread() {
+                public void run() {
+                    synchronized (br1) {
+                        System.out.println("Thread t1 is locked with s2");
+                        synchronized (br) {
+                            System.out.println("Thread t2 is locked with s1");
+                        }
+                    }
+                }
+            };
+            t1.start();
+            t2.start();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+}
