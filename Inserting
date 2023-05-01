@@ -1,0 +1,13 @@
+import java.util.*;
+public class Inserting{
+  public static void main(String[]args){
+    int[] arr=new int[30];
+    ArrayList<String> al=new ArrayList<String>();
+    al.add("Nagendra");
+    al.add("Vijay");
+    al.add("Kumar");
+    al.add("all");
+    al.add("Mighty");
+    
+  }
+}
