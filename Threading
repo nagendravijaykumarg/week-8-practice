@@ -1,0 +1,29 @@
+import java.util.*;
+
+ class Threading extends Thread {
+    int n;
+}
+
+public class MultiThreadingEx extends Threading {
+    Scanner s = new Scanner(System.in);
+
+    public void run() {
+        System.out.print("Enter number of seconds : ");
+        int n = s.nextInt();
+
+        for (int i = n; i >= 0; i--) {
+            System.out.println(i + " seconds to go...");
+            try {
+                Thread.sleep(60);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+    }
+
+    public static void main(String[] args) {
+        MultiThreadingEx obj = new MultiThreadingEx();
+        obj.start();
+    }
+}
